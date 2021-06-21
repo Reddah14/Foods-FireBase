@@ -11,6 +11,9 @@ const mutations = {
 }
 
 const actions = {
+    logoutUser() {
+        firebaseAuth.signOut()
+    },    
     registerUser({}, payload) {
         firebaseAuth.createUserWithEmailAndPassword(payload.email, payload.password)
             .then(response => {
