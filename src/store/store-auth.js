@@ -1,11 +1,13 @@
 import { firebaseAuth } from "../boot/firebase"
 
 const state = {
-
+    isUserLoggedIn: false
 }
 
 const mutations = {
-
+    setLoggedIn(state, value) {
+        state.isUserLoggedIn = value
+    }
 }
 
 const actions = {
