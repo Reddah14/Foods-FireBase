@@ -44,6 +44,14 @@
             <q-item-label>Login</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item v-else @click="logoutUser" clickable exact>
+          <q-item-section avatar>
+            <q-icon name="account_circle" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Logout</q-item-label>
+          </q-item-section>
+        </q-item>        
       </q-list>
     </q-drawer>
 
@@ -67,7 +75,10 @@ export default {
     }
   },
   methods: {
-    openURL
+    openURL,
+    logoutUser() {
+      console.log('logout user');
+    }
   }
 }
 </script>
