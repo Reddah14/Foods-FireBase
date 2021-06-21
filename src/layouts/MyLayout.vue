@@ -36,7 +36,7 @@
             <q-item-label>Foods</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable to="/auth" exact>
+        <q-item v-if="!isUserLoggedIn" clickable exact>
           <q-item-section avatar>
             <q-icon name="account_circle" />
           </q-item-section>
@@ -55,9 +55,12 @@
 
 <script>
 import { openURL } from 'quasar'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'MyLayout',
+  computed: {
+    ...mapState('auth', ['isUserLoggedIn'])
+  },
   data () {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop
