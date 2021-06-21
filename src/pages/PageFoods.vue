@@ -2,13 +2,13 @@
 	<!--
 	Awesome Exercise 4 - Firebase
 
-	1) Create a new Firebase project called "Foods" and enable Email / Password authentication within Firebase
-	2) Add the Firebase package to the project and create a boot file which makes the auth and database API's available within your app. Hint: you'll need to register a web app on Firebase
-	3) Create an auth Vuex store file with empty state, mutations, actions & getters objects and import the Firebase Auth API
-	4) Add the ability to register a user
-	5) Add the ability to login a user
-	6) Hide the Login button when the user is logged in
-	7) Add a Logout button which only displays when the user is logged in. Log the user out when this is clicked
+	1) Create a new Firebase project called "Foods" and enable Email / Password authentication within Firebase //DONE
+	2) Add the Firebase package to the project and create a boot file which makes the auth and database API's available within your app. Hint: you'll need to register a web app on Firebase //DONE
+	3) Create an auth Vuex store file with empty state, mutations, actions & getters objects and import the Firebase Auth API // DONE
+	4) Add the ability to register a user // DONE
+	5) Add the ability to login a user // DONE
+	6) Hide the Login button when the user is logged in // DONE
+	7) Add a Logout button which only displays when the user is logged in. Log the user out when this is clicked // DONE
 	8) Redirect the user to appropriate pages when they log in or log out
 	9) Prevent the user from reaching the Foods page when not logged in
 	10) Add some data for one of your users to the Realtime Database, based on the data in store-foods.js
