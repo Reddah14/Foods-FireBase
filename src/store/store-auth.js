@@ -32,6 +32,18 @@ const actions = {
                 //add catch call back for when there is an error
                 console.log(error.message)
             })          
+    },
+    handleUserStateChange({ commit }) {
+        firebaseAuth.onAuthStateChanged(user => {
+            if (user) {
+                console.log('user is logged In');
+                commit('setLoggedIn', true)
+            }
+            else {
+                console.log('user is logout');
+                commit('setLoggedIn', false)
+            }
+        })
     }
 }
 
