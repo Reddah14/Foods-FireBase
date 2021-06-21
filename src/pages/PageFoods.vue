@@ -30,7 +30,7 @@
 			:id="key" />
 
 	    <button-add
-	    	@click="showAddFoodModal = true" />
+	    	@click="showAddFoodModal = true" /> 
 
 	    <q-dialog 
 	    	v-model="showAddFoodModal">
