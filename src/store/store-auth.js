@@ -9,7 +9,10 @@ const mutations = {
 }
 
 const actions = {
-
+    registerUser({}, payload) {
+        firebaseAuth.createUserWithEmailAndPassword(payload.email, payload.password)
+        //console.log('payload: ', payload);
+    }
 }
 
 const getters = {
