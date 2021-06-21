@@ -63,7 +63,7 @@
 
 <script>
 import { openURL } from 'quasar'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: {
@@ -75,10 +75,8 @@ export default {
     }
   },
   methods: {
+    ...mapActions('auth', ['logoutUser']),
     openURL,
-    logoutUser() {
-      console.log('logout user');
-    }
   }
 }
 </script>
