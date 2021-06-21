@@ -19,13 +19,13 @@ const firebaseConfig = {
   };
   
   // Initialize Firebase5
-  firebase.initializeApp(firebaseConfig);
+let firebaseApp = firebase.initializeApp(firebaseConfig);
 
   // creating vars to store the access references to firebase database & authentication API's
 
-    let firebaseDb = firebaseApp.database()
-    let firebaseAuth = firebaseApp.auth()
+let firebaseDb = firebaseApp.database()
+let firebaseAuth = firebaseApp.auth()
 
   // making available database and authentication API's
 
-    export { firebaseDb, firebaseAuth }
+export { firebaseDb, firebaseAuth }
