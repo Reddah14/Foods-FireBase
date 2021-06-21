@@ -11,7 +11,25 @@ const mutations = {
 const actions = {
     registerUser({}, payload) {
         firebaseAuth.createUserWithEmailAndPassword(payload.email, payload.password)
-        //console.log('payload: ', payload);
+            .then(response => {
+                //we fire a callback(response) for when successful
+                console.log('response: ', response);
+            })
+            .catch(error => {
+                //add catch call back for when there is an error
+                console.log(error.message)
+            })             
+    },
+    loginUser({}, payload) {
+        firebaseAuth.signInWithEmailAndPassword(payload.email, payload.password)
+            .then(response => {
+                //we fire a callback(response) for when successful
+                console.log('response: ', response);
+            })
+            .catch(error => {
+                //add catch call back for when there is an error
+                console.log(error.message)
+            })          
     }
 }
 
