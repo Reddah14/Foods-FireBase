@@ -40,16 +40,19 @@ const actions = {
 	deleteFood({ commit }, id) {
 		commit('deleteFood', id)
 	},
-	addFood({ commit }, food) {
+	addFood({ dispatch }, food) {
 		let newId = uid()
 		let payload = {
 			id: newId,
 			food: food
 		}
-		commit('addFood', payload)
+		dispatch('fbAddFood', payload)
 	},
 	updateFood({ commit }, payload) {
 		commit('updateFood', payload)
+	},
+	fbAddFood({}, payload) {
+		console.log(payload);
 	}
 }
 
