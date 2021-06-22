@@ -1,8 +1,35 @@
 import Vue from 'vue'
 import { uid } from 'quasar'
+import { firebaseDb, firebaseAuth } from '../boot/firebase'
 
 const state = {
-	foods: {
+	foods: {},
+	// we get all tasks from firebase DataBase
+
+/* CHANGE FORMAT DATA DESIGN in order to set it in our database */  
+/* unique user id from firebase console */
+/*         'Ho0seSIzGyZ2kXiB8cXxZT6WKC02' : {
+'ID1': {               
+	name: 'Go to shop',
+	completed: false,
+	dueDate: '2021/01/24',
+	dueTime: '13:00'
+},
+'ID2': {
+	name: 'Get bananas',
+	completed: false,
+	dueDate: '2021/02/08',
+	dueTime: '10:30'
+},
+'ID3': {
+	name: 'Get apples',
+	completed: false,
+	dueDate: '2021/10/1',
+	dueTime: '21:00'
+}
+} */	// NOTE******** Sample for json import file below
+
+/* 	"Jiky1rVYj4ZvWId33jWXo3zNweI3": {
 		'id1': {
 			name: 'Burger',
 			description: 'A burger is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun.',
@@ -21,7 +48,7 @@ const state = {
 			imageUrl: 'https://i.imgur.com/RbKjUjB.jpg',
 			rating: 1
 		}	
-	}
+	} */
 }
 
 const mutations = {
@@ -53,6 +80,18 @@ const actions = {
 	},
 	fbAddFood({}, payload) {
 		console.log(payload);
+	// set up reference where we want to add new task to
+	let userId = firebaseAuth.currentUser.uid // database user id
+	let foodRef = firebaseDb.ref('foods/' + userId + '/' + payload.id ) // set up the ref
+// use set method to write in database
+	foodRef.set(payload.food, error => {
+		if (error) {
+			console.log(error.message);
+		}
+		else {
+			// food added
+		}
+	})
 	}
 }
 
