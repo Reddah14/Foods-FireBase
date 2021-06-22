@@ -84,14 +84,17 @@ const actions = {
 	let userId = firebaseAuth.currentUser.uid // database user id
 	let foodRef = firebaseDb.ref('foods/' + userId + '/' + payload.id ) // set up the ref
 // use set method to write in database
-	foodRef.set(payload.food, error => {
-		if (error) {
-			console.log(error.message);
-		}
-		else {
-			// food added
-		}
-	})
+		foodRef.set(payload.food, error => {
+			if (error) {
+				console.log(error.message);
+			}
+			else {
+				// food added
+			}
+		})
+	},
+	fbReadFoods({ }) {
+		console.log('reading foodsData');
 	}
 }
 
