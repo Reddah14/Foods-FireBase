@@ -36,12 +36,13 @@ const actions = {
                 console.log(error.message)
             })          
     },
-    handleUserStateChange({ commit }) {
+    handleUserStateChange({ commit, dispatch }) {
         firebaseAuth.onAuthStateChanged(user => {
             if (user) {
                 console.log('user is logged In');
                 commit('setLoggedIn', true)
                 LocalStorage.set('isUserLoggedIn', true)
+                dispatch('foods/fbReadFoods', null, { root: true })
                 this.$router.push('/').catch(err => {})
             }
             else {
