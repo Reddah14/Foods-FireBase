@@ -97,7 +97,9 @@ const actions = {
 		console.log('reading foodsData');
         console.log(firebaseAuth.currentUser); // get current user info
 		
-		userID = firebaseAuth.currentUser.uid
+		let userID = firebaseAuth.currentUser.uid
+			// setting ref in order to read data from that node
+		let userFoods = firebaseDb.ref('foods/' + userID)
 	}
 }
 
