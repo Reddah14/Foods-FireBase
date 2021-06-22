@@ -102,7 +102,7 @@ const actions = {
 		let userFoods = firebaseDb.ref('foods/' + userId)
 		
 // HOOK 
-		// child added (this hook is also fired when we first connect to the database. When we first connect to this node(uid) this child added hook will be fired)
+	// child added (this hook is also fired when we first connect to the database. When we first connect to this node(uid) this child added hook will be fired)
 				// Will be triggered when we add a food as well
 		userFoods.on('child_added', snapshot => {
 			console.log('snapshot from child added hook: ', snapshot);
@@ -118,7 +118,7 @@ const actions = {
 		// commit mutation to add task with payload above
 			commit('addFood', payload)
 		})
-		// child changed
+	// child changed
 		userFoods.on('child_changed', snapshot => {
 			console.log('snapshot from child added hook: ', snapshot);
 			let food = snapshot.val()
@@ -131,7 +131,14 @@ const actions = {
 			}
 		// commit mutation to update food
 			commit('updateFood', payload)
-		})		
+		})
+	// child removed
+		userFoods.on('child_removed', snapshot => {
+			let foodId = snapshot.key
+			
+			// now we commmit the mutation
+			commit('deleteFood', foodId)
+		})  			
 	}
 }
 
