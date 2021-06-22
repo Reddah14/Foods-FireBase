@@ -36,7 +36,11 @@
             <q-item-label>Foods</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item v-if="!isUserLoggedIn" clickable exact>
+        <q-item
+          to="/auth"
+          v-if="!isUserLoggedIn"
+          clickable
+          exact>
           <q-item-section avatar>
             <q-icon name="account_circle" />
           </q-item-section>
