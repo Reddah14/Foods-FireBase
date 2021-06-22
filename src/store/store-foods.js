@@ -107,6 +107,14 @@ const actions = {
 			// we need to call val() method in order to get the data or value from the snapshot
 			let food = snapshot.val()
 			console.log('food is: ', food);
+
+			// set a payload in order to add this food to our state.foods object
+			let payload = {
+				id: snapshot.key,
+				food: food
+			}
+		// commit mutation to add task with payload above
+			commit('addFood', payload)
 		})
 	}
 }
