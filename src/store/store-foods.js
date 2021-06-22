@@ -95,6 +95,9 @@ const actions = {
 	},
 	fbReadFoods({ }) {
 		console.log('reading foodsData');
+        console.log(firebaseAuth.currentUser); // get current user info
+		
+		userID = firebaseAuth.currentUser.uid
 	}
 }
 
