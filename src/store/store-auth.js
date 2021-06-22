@@ -13,6 +13,7 @@ const mutations = {
 const actions = {
     logoutUser() {
         firebaseAuth.signOut()
+
     },    
     registerUser({}, payload) {
         firebaseAuth.createUserWithEmailAndPassword(payload.email, payload.password)
@@ -46,6 +47,7 @@ const actions = {
             else {
                 console.log('user is logout');
                 commit('setLoggedIn', false)
+                this.$router.replace('/auth') // use replace() to get rid of user's history, once loggedOut can't go back.
             }
         })
     }
