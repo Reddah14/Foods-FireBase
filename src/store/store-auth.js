@@ -29,6 +29,7 @@ const actions = {
         firebaseAuth.signInWithEmailAndPassword(payload.email, payload.password)
             .then(response => {
                 //we fire a callback(response) for when successful
+                this.$router.push('/')
                 console.log('response: ', response);
             })
             .catch(error => {
