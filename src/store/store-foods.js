@@ -100,9 +100,13 @@ const actions = {
 		let userId = firebaseAuth.currentUser.uid
 			// setting ref in order to read data from that node
 		let userFoods = firebaseDb.ref('foods/' + userId)
-		// child added
+		// child added (this hook is also fired when we first connect to the database. When we first connect to this node(uid) this child added hook will be fired)
+				// Will be triggered when we add a food as well
 		userFoods.on('child_added', snapshot => {
 			console.log('snapshot from child added hook: ', snapshot);
+			// we need to call val() method in order to get the data or value from the snapshot
+			let food = snapshot.val()
+			console.log('food is: ', food);
 		})
 	}
 }
