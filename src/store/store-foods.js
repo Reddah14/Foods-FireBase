@@ -100,6 +100,8 @@ const actions = {
 		let userId = firebaseAuth.currentUser.uid
 			// setting ref in order to read data from that node
 		let userFoods = firebaseDb.ref('foods/' + userId)
+		
+// HOOK 
 		// child added (this hook is also fired when we first connect to the database. When we first connect to this node(uid) this child added hook will be fired)
 				// Will be triggered when we add a food as well
 		userFoods.on('child_added', snapshot => {
@@ -116,6 +118,20 @@ const actions = {
 		// commit mutation to add task with payload above
 			commit('addFood', payload)
 		})
+		// child changed
+		userFoods.on('child_changed', snapshot => {
+			console.log('snapshot from child added hook: ', snapshot);
+			let food = snapshot.val()
+			console.log('food is: ', food);
+
+			// set a payload in order to update food
+			let payload = {
+				id: snapshot.key,
+				updates: food
+			}
+		// commit mutation to update food
+			commit('updateFood', payload)
+		})		
 	}
 }
 
