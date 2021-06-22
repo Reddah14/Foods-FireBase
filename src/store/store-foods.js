@@ -75,8 +75,8 @@ const actions = {
 		}
 		dispatch('fbAddFood', payload)
 	},
-	updateFood({ commit }, payload) {
-		commit('updateFood', payload)
+	updateFood({ dispatch }, payload) {
+		dispatch('fbUpdateFood', payload)
 	},
 	fbAddFood({}, payload) {
 		console.log(payload);
@@ -92,6 +92,20 @@ const actions = {
 				// food added
 			}
 		})
+	},
+	fbUpdateFood({}, payload) {
+		let userId = firebaseAuth.currentUser.uid
+		let foodRef = firebaseDb.ref('foods/' + userId + '/' + payload.id)
+	 // update method
+		foodRef.update(payload.updates, error => { // we pass in "updates" because that is what we are sending from editTask Component as a payload
+			if (error) {
+				console.log(error.message)
+			}
+			else {
+				console.log('food updated');
+			}
+			
+		})			
 	},
 	fbReadFoods({ commit }) {
 		console.log('reading foodsData from firebase');
