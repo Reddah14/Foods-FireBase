@@ -19,7 +19,7 @@ const actions = {
         firebaseAuth.createUserWithEmailAndPassword(payload.email, payload.password)
             .then(response => {
                 //we fire a callback(response) for when successful
-                console.log('response: ', response);
+                //console.log('response: ', response);
             })
             .catch(error => {
                 //add catch call back for when there is an error
@@ -29,9 +29,7 @@ const actions = {
     loginUser({}, payload) {
         firebaseAuth.signInWithEmailAndPassword(payload.email, payload.password)
             .then(response => {
-                //we fire a callback(response) for when successful
-                this.$router.push('/').catch(err => {})
-                console.log('response: ', response);
+                // user is logged in
             })
             .catch(error => {
                 //add catch call back for when there is an error
@@ -44,6 +42,7 @@ const actions = {
                 console.log('user is logged In');
                 commit('setLoggedIn', true)
                 LocalStorage.set('isUserLoggedIn', true)
+                this.$router.push('/').catch(err => {})
             }
             else {
                 console.log('user is logout');
