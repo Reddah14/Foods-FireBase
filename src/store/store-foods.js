@@ -64,8 +64,8 @@ const mutations = {
 }
 
 const actions = {
-	deleteFood({ commit }, id) {
-		commit('deleteFood', id)
+	deleteFood({ dispatch }, id) {
+		dispatch('fbDeleteFood', id)
 	},
 	addFood({ dispatch }, food) {
 		let newId = uid()
@@ -77,6 +77,9 @@ const actions = {
 	},
 	updateFood({ dispatch }, payload) {
 		dispatch('fbUpdateFood', payload)
+	},
+	fbDeleteFood({}, id) {
+		console.log('food deleted from db');
 	},
 	fbAddFood({}, payload) {
 		console.log(payload);
