@@ -93,13 +93,17 @@ const actions = {
 			}
 		})
 	},
-	fbReadFoods({ }) {
-		console.log('reading foodsData');
+	fbReadFoods({ commit }) {
+		console.log('reading foodsData from firebase');
         console.log(firebaseAuth.currentUser); // get current user info
 		
-		let userID = firebaseAuth.currentUser.uid
+		let userId = firebaseAuth.currentUser.uid
 			// setting ref in order to read data from that node
-		let userFoods = firebaseDb.ref('foods/' + userID)
+		let userFoods = firebaseDb.ref('foods/' + userId)
+		// child added
+		userFoods.on('child_added', snapshot => {
+			console.log('snapshot from child added hook: ', snapshot);
+		})
 	}
 }
 
