@@ -78,8 +78,18 @@ const actions = {
 	updateFood({ dispatch }, payload) {
 		dispatch('fbUpdateFood', payload)
 	},
-	fbDeleteFood({}, id) {
-		console.log('food deleted from db');
+	fbDeleteFood({}, foodId) {
+		let userId = firebaseAuth.currentUser.uid
+		let foodRef = firebaseDb.ref('foods/' + userId + '/' + foodId)
+
+		foodRef.remove(error => {
+            if (error) {
+                showErrorMessage(error.message)
+            }
+            else {
+				console.log('food deleted from db');
+            }            
+        })
 	},
 	fbAddFood({}, payload) {
 		console.log(payload);
