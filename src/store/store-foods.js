@@ -99,6 +99,8 @@ const actions = {
 		console.log(payload);
 	// set up reference where we want to add new task to
 	let userId = firebaseAuth.currentUser.uid // database user id
+// OVERRIDING user's id in order to test security rules from database
+		//userId = "NaHRqhzQ42NSVGhMfHq6Sv8RdWw1"		
 	let foodRef = firebaseDb.ref('foods/' + userId + '/' + payload.id ) // set up the ref
 // use set method to write in database
 		foodRef.set(payload.food, error => {
@@ -129,8 +131,18 @@ const actions = {
         console.log(firebaseAuth.currentUser); // get current user info
 		
 		let userId = firebaseAuth.currentUser.uid
+// OVERRIDING user's id in order to test security rules from database
+		//userId = "NaHRqhzQ42NSVGhMfHq6Sv8RdWw1"		
 			// setting ref in order to read data from that node
 		let userFoods = firebaseDb.ref('foods/' + userId)
+
+	// initial check for data (in order to see error in console when trying to access another users data)
+		//once method will get fired once listenind to 'value' event which will try to get values from the reference we set up before.
+		userFoods.once('value', snapshot => {
+			//get values (foods in this case)
+		}), error => {
+			console.log(error.message);
+		}
 		
 // HOOK 
 	// child added (this hook is also fired when we first connect to the database. When we first connect to this node(uid) this child added hook will be fired)
