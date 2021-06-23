@@ -14,10 +14,10 @@
 	10) Add some data for one of your users to the Realtime Database, based on the data in store-foods.js // DONE
 	11) Add the ability to read the current user's food data from Firebase and display it within the app - whenever a food item is added, updated or deleted within Firebase // DONE
 	12) Add the ability to write data to Firebase whenever a food item is added, updated or deleted within the app // DONE
-	13) Ensure that multiple users can log in and log out without seeing another user's data in the app
-	14) Add database rules to Firebase to ensure that each user can only read or write to their own data
-	15) Display a nice error notification whenever there is an auth or database error
-	16) Display the logged in user's email address within the logout button, e.g "Logout test@test.com"
+	13) Ensure that multiple users can log in and log out without seeing another user's data in the app // DONE
+	14) Add database rules to Firebase to ensure that each user can only read or write to their own data // DONE
+	15) Display a nice error notification whenever there is an auth or database error // DONE
+	16) Display the logged in user's email address within the logout button, e.g "Logout test@test.com" // DONE
 	-->
 
   <q-page class="q-pa-lg">
