@@ -12,6 +12,7 @@ export default {
     ...mapActions('auth', ['handleUserStateChange'])
   },
   mounted() {
+      // this hook is triggered when app first loads
     this.handleUserStateChange()
   }
 }
