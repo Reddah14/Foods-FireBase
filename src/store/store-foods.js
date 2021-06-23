@@ -148,7 +148,9 @@ const actions = {
 			}
 		// commit mutation to add task with payload above
 			commit('addFood', payload)
-		})
+		}), error => {
+			showMessage(error.message);
+		}
 	// child changed
 		userFoods.on('child_changed', snapshot => {
 			//console.log('snapshot from child added hook: ', snapshot);
@@ -162,14 +164,18 @@ const actions = {
 			}
 		// commit mutation to update food
 			commit('updateFood', payload)
-		})
+		}), error => {
+			showMessage(error.message);
+		}
 	// child removed
 		userFoods.on('child_removed', snapshot => {
 			let foodId = snapshot.key
 			
 			// now we commmit the mutation
 			commit('deleteFood', foodId)
-		})  			
+		}), error => {
+			showMessage(error.message);
+		}  			
 	}
 }
 
