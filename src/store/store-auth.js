@@ -12,7 +12,7 @@ const mutations = {
         state.isUserLoggedIn = value
     },
     setLabelLogoutButton(state, value) {
-        console.log('set label with email', value);
+        //console.log('set label with email', value);
         state.labelLogoutButton = value
     }
 }
@@ -45,7 +45,7 @@ const actions = {
     handleUserStateChange({ commit, dispatch }) {
         firebaseAuth.onAuthStateChanged(user => {
             if (user) {
-                console.log('user is logged In =>', user.email);
+                //console.log('user is logged In =>', user.email);
                 commit('setLabelLogoutButton', user.email)
                 commit('setLoggedIn', true)
                 LocalStorage.set('isUserLoggedIn', true)

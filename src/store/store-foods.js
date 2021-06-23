@@ -92,12 +92,12 @@ const actions = {
                 showMessage(error.message)
             }
             else {
-				console.log('food deleted from db');
+				//console.log('food deleted from db');
             }            
         })
 	},
 	fbAddFood({}, payload) {
-		console.log(payload);
+		//console.log(payload);
 	// set up reference where we want to add new task to
 	let userId = firebaseAuth.currentUser.uid // database user id
 // OVERRIDING user's id in order to test security rules from database
@@ -122,14 +122,14 @@ const actions = {
 				showMessage(error.message)
 			}
 			else {
-				console.log('food updated');
+				//console.log('food updated');
 			}
 			
 		})			
 	},
 	fbReadFoods({ commit }) {
-		console.log('reading foodsData from firebase');
-        console.log(firebaseAuth.currentUser); // get current user info
+		//console.log('reading foodsData from firebase');
+        //console.log(firebaseAuth.currentUser); // get current user info
 		
 		let userId = firebaseAuth.currentUser.uid
 // OVERRIDING user's id in order to test security rules from database
@@ -149,10 +149,10 @@ const actions = {
 	// child added (this hook is also fired when we first connect to the database. When we first connect to this node(uid) this child added hook will be fired)
 				// Will be triggered when we add a food as well
 		userFoods.on('child_added', snapshot => {
-			console.log('snapshot from child added hook: ', snapshot);
+			//console.log('snapshot from child added hook: ', snapshot);
 			// we need to call val() method in order to get the data or value from the snapshot
 			let food = snapshot.val()
-			console.log('food is: ', food);
+			//console.log('food is: ', food);
 
 			// set a payload in order to add this food to our state.foods object
 			let payload = {
@@ -164,9 +164,9 @@ const actions = {
 		})
 	// child changed
 		userFoods.on('child_changed', snapshot => {
-			console.log('snapshot from child added hook: ', snapshot);
+			//console.log('snapshot from child added hook: ', snapshot);
 			let food = snapshot.val()
-			console.log('food is: ', food);
+			//console.log('food is: ', food);
 
 			// set a payload in order to update food
 			let payload = {
