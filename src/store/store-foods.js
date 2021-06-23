@@ -87,14 +87,10 @@ const actions = {
 		let userId = firebaseAuth.currentUser.uid
 		let foodRef = firebaseDb.ref('foods/' + userId + '/' + foodId)
 
-		foodRef.remove(error => {
-            if (error) {
-                showMessage(error.message)
-            }
-            else {
-				//console.log('food deleted from db');
-            }            
-        })
+		foodRef.remove() 
+		.catch( error => {
+			showMessage(error.message)
+		})
 	},
 	fbAddFood({}, payload) {
 		//console.log(payload);
@@ -104,28 +100,19 @@ const actions = {
 		//userId = "NaHRqhzQ42NSVGhMfHq6Sv8RdWw1"		
 	let foodRef = firebaseDb.ref('foods/' + userId + '/' + payload.id ) // set up the ref
 // use set method to write in database
-		foodRef.set(payload.food, error => {
-			if (error) {
+		foodRef.set(payload.food) 
+			.catch( error => {
 				showMessage(error.message)
-			}
-			else {
-				// food added
-			}
-		})
+			})
 	},
 	fbUpdateFood({}, payload) {
 		let userId = firebaseAuth.currentUser.uid
 		let foodRef = firebaseDb.ref('foods/' + userId + '/' + payload.id)
 	 // update method
-		foodRef.update(payload.updates, error => { // we pass in "updates" because that is what we are sending from editTask Component as a payload
-			if (error) {
+		foodRef.update(payload.updates) 
+			.catch( error => {
 				showMessage(error.message)
-			}
-			else {
-				//console.log('food updated');
-			}
-			
-		})			
+			})		
 	},
 	fbReadFoods({ commit }) {
 		//console.log('reading foodsData from firebase');
