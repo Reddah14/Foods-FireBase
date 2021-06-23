@@ -3,12 +3,17 @@ import { LocalStorage, Dialog } from 'quasar'
 import { showMessage } from 'src/functions/function-show-toast'
 
 const state = {
-    isUserLoggedIn: false
+    isUserLoggedIn: false,
+    labelLogoutButton: ""
 }
 
 const mutations = {
     setLoggedIn(state, value) {
         state.isUserLoggedIn = value
+    },
+    setLabelLogoutButton(state, value) {
+        console.log('set label with email', value);
+        state.labelLogoutButton = value
     }
 }
 
@@ -40,7 +45,8 @@ const actions = {
     handleUserStateChange({ commit, dispatch }) {
         firebaseAuth.onAuthStateChanged(user => {
             if (user) {
-                //console.log('user is logged In');
+                console.log('user is logged In =>', user.email);
+                commit('setLabelLogoutButton', user.email)
                 commit('setLoggedIn', true)
                 LocalStorage.set('isUserLoggedIn', true)
                 this.$router.push('/').catch(err => {})

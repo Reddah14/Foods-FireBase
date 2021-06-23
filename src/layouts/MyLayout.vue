@@ -53,7 +53,7 @@
             <q-icon name="account_circle" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Logout</q-item-label>
+            <q-item-label>{{ labelLogoutButton | niceLabel }}</q-item-label>
           </q-item-section>
         </q-item>        
       </q-list>
@@ -71,7 +71,10 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: {
-    ...mapState('auth', ['isUserLoggedIn'])
+    ...mapState('auth', [
+        'isUserLoggedIn',
+        'labelLogoutButton'
+      ])
   },
   data () {
     return {
@@ -80,7 +83,13 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['logoutUser']),
-    openURL,
+    openURL
+  },
+  filters: {
+    niceLabel(value) {
+      let niceLabel = "Logout " + value
+      return niceLabel;
+    }
   }
 }
 </script>
