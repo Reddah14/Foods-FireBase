@@ -39,14 +39,14 @@ const actions = {
     handleUserStateChange({ commit, dispatch }) {
         firebaseAuth.onAuthStateChanged(user => {
             if (user) {
-                console.log('user is logged In');
+                //console.log('user is logged In');
                 commit('setLoggedIn', true)
                 LocalStorage.set('isUserLoggedIn', true)
-                dispatch('foods/fbReadFoods', null, { root: true })
                 this.$router.push('/').catch(err => {})
+                dispatch('foods/fbReadFoods', null, { root: true })
             }
             else {
-                console.log('user is logout');
+                //console.log('user is logout');
                 commit('setLoggedIn', false)
                 LocalStorage.set('isUserLoggedIn', false)
                 this.$router.replace('/auth').catch(err => {}) // use replace() to get rid of user's history, once loggedOut can't go back.
