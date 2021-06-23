@@ -53,7 +53,10 @@
             <q-icon name="account_circle" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>{{ labelLogoutButton | niceLabel }}</q-item-label>
+            <q-item-label>
+              Logout <br>
+              <small> {{ labelLogoutButton }} </small>
+            </q-item-label>
           </q-item-section>
         </q-item>        
       </q-list>
@@ -84,12 +87,6 @@ export default {
   methods: {
     ...mapActions('auth', ['logoutUser']),
     openURL
-  },
-  filters: {
-    niceLabel(value) {
-      let niceLabel = "Logout " + value
-      return niceLabel;
-    }
   }
 }
 </script>
