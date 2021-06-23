@@ -48,7 +48,7 @@
             <q-item-label>Login</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item v-else @click="logoutUser" clickable exact>
+        <q-item v-else @click="logoutUser" clickable>
           <q-item-section avatar>
             <q-icon name="account_circle" />
           </q-item-section>
