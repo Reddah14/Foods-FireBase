@@ -60,6 +60,10 @@ const mutations = {
 	},
 	updateFood(state, payload) {
 		Object.assign(state.foods[payload.id], payload.updates)
+	},
+	clearFoodsObject(state) {
+		state.foods = {}
+		//console.log('cleared foods: ', state.foods);
 	}
 }
 

@@ -47,6 +47,7 @@ const actions = {
             }
             else {
                 //console.log('user is logout');
+                commit('foods/clearFoodsObject', null, { root: true })
                 commit('setLoggedIn', false)
                 LocalStorage.set('isUserLoggedIn', false)
                 this.$router.replace('/auth').catch(err => {}) // use replace() to get rid of user's history, once loggedOut can't go back.
