@@ -1,6 +1,6 @@
 import { firebaseAuth } from "../boot/firebase"
 import { LocalStorage, Dialog } from 'quasar'
-import { showErrorMessage } from 'src/functions/function-show-error-toast'
+import { showMessage } from 'src/functions/function-show-toast'
 
 const state = {
     isUserLoggedIn: false
@@ -24,7 +24,7 @@ const actions = {
             })
             .catch(error => {
                 //add catch call back for when there is an error
-                console.log(error.message)
+                showMessage(error.message)
             })             
     },
     loginUser({}, payload) {
@@ -34,7 +34,7 @@ const actions = {
             })
             .catch(error => {
                 //add catch call back for when there is an error
-                showErrorMessage(error.message)
+                showMessage(error.message)
             })          
     },
     handleUserStateChange({ commit, dispatch }) {

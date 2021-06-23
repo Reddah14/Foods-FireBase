@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { uid } from 'quasar'
 import { firebaseDb, firebaseAuth } from '../boot/firebase'
+import { showMessage } from '../functions/function-show-toast'
 
 const state = {
 	foods: {},
@@ -88,7 +89,7 @@ const actions = {
 
 		foodRef.remove(error => {
             if (error) {
-                showErrorMessage(error.message)
+                showMessage(error.message)
             }
             else {
 				console.log('food deleted from db');
@@ -105,7 +106,7 @@ const actions = {
 // use set method to write in database
 		foodRef.set(payload.food, error => {
 			if (error) {
-				console.log(error.message);
+				showMessage(error.message)
 			}
 			else {
 				// food added
@@ -118,7 +119,7 @@ const actions = {
 	 // update method
 		foodRef.update(payload.updates, error => { // we pass in "updates" because that is what we are sending from editTask Component as a payload
 			if (error) {
-				console.log(error.message)
+				showMessage(error.message)
 			}
 			else {
 				console.log('food updated');
@@ -141,7 +142,7 @@ const actions = {
 		userFoods.once('value', snapshot => {
 			//get values (foods in this case)
 		}), error => {
-			console.log(error.message);
+			showMessage(error.message);
 		}
 		
 // HOOK 
