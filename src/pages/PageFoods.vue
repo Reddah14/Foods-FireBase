@@ -12,8 +12,8 @@
 	8) Redirect the user to appropriate pages when they log in or log out // DONE
 	9) Prevent the user from reaching the Foods page when not logged in // DONE
 	10) Add some data for one of your users to the Realtime Database, based on the data in store-foods.js // DONE
-	11) Add the ability to read the current user's food data from Firebase and display it within the app - whenever a food item is added, updated or deleted within Firebase
-	12) Add the ability to write data to Firebase whenever a food item is added, updated or deleted within the app
+	11) Add the ability to read the current user's food data from Firebase and display it within the app - whenever a food item is added, updated or deleted within Firebase // DONE
+	12) Add the ability to write data to Firebase whenever a food item is added, updated or deleted within the app // DONE
 	13) Ensure that multiple users can log in and log out without seeing another user's data in the app
 	14) Add database rules to Firebase to ensure that each user can only read or write to their own data
 	15) Display a nice error notification whenever there is an auth or database error
