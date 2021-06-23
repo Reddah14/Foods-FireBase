@@ -54,6 +54,7 @@ const actions = {
             }
             else {
                 //console.log('user is logout');
+                commit('setLabelLogoutButton', '')
                 commit('foods/clearFoodsObject', null, { root: true })
                 commit('setLoggedIn', false)
                 LocalStorage.set('isUserLoggedIn', false)
